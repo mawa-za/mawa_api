@@ -16,13 +16,14 @@ class UserService {
   static List assignees = [];
 
   static late List list = [];
-  static late String username;
+  static late String gv_username;
   static late String password;
   static late String email;
   static late dynamic pass;
   late String resource;
 
   authenticate({required String username, required String password}) async {
+    //username = username;
     dynamic response = await NetworkRequest().unsecuredMawaAPI(
         NetworkRequest.methodPost,
         resource: Resources.authenticate,
@@ -113,14 +114,14 @@ class UserService {
             resource: '${Resources.user}/$username/${Resources.reset}'));
   }
 
-  getUserRoles() async {
-    userRoles = {};
-    // List
-    list = await NetworkRequest.decodeJson(await NetworkRequest()
-        .securedMawaAPI(NetworkRequest.methodGet,
-            resource: '${Resources.user}/$username/role'));
-    return list;
-  }
+  // getUserRoles() async {
+  //   userRoles = {};
+  //   // List
+  //   list = await NetworkRequest.decodeJson(await NetworkRequest()
+  //       .securedMawaAPI(NetworkRequest.methodGet,
+  //           resource: '${Resources.user}/$username/role'));
+  //   return list;
+  // }
 
   addUser({
     required String id,

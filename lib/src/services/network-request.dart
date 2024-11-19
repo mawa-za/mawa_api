@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mawa_api/mawa_api.dart';
 import 'package:mawa_api/src/services/user-service.dart';
 import 'package:mawa_api/src/utils/globals.dart';
 import 'package:mawa_api/src/utils/keys.dart';
@@ -123,7 +124,7 @@ class NetworkRequest {
       tokenKey: token,
       secured: secured,
     );
-    url = Uri.https(apiURL, resource, queryParameters);
+    url = Uri.https(apiHost, resource, queryParameters);
     if (kDebugMode) {
       print(method);
       print(url);
@@ -182,6 +183,7 @@ class NetworkRequest {
       tenantID = base.split('//').last;
     } else {
       tenantID = await prefs.getString(SharedPrefs.tenantID) ?? '';
+      // tenantID = MawaAPI.getTenant() ?? '';
     }
     apiURL = 'https://$apiHost/';
     dynamic url;
@@ -239,9 +241,9 @@ class NetworkRequest {
                 return (prefs.setString(
                     SharedPrefs.refreshToken, Token.refreshToken));
               });
-              preferences.then((SharedPreferences prefs) {
-                return (prefs.setString(SharedPrefs.username, UserService.username));
-              });
+              // preferences.then((SharedPreferences prefs) {
+              //   return (prefs.setString(SharedPrefs.username, UserService.username));
+              // });
             }
 
           }

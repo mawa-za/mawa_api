@@ -257,7 +257,7 @@ class JsonResponses {
 }
 
 class Resources {
-  static const String membership = 'membership';
+  static const String membership = 'membership/v2';
   static const String partner = 'partner';
   static const String validateSAID = 'validateSAID';
   static const String attachments = 'attachments';
@@ -637,7 +637,7 @@ class SharedPrefs {
   static const initialRoute = 'initialRoute';
   static const loginScreenID = 'loginScreenID';
   static const loginRole = 'loginRole';
-  static const tenantID = 'tenantID';
+  static const tenantID = 'X-TenantID';
 }
 
 class CommentTypes{

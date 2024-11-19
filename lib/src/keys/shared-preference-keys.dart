@@ -12,5 +12,6 @@ class SharedPrefKey {
   static const initialRoute = 'initialRoute';
   static const loginScreenID = 'loginScreenID';
   static const loginRole = 'loginRole';
-  static const tenantID = 'X-TenantID"';
+  static const tenantID = 'X-TenantID';
+  static const salesArea = 'SALES-AREA';
 }
