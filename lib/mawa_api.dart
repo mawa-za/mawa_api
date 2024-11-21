@@ -10,5 +10,5 @@ export 'src/keys/shared-preference-keys.dart';
 export 'src/objects/membership.dart';
 export 'src/services/field-option-service.dart';
 export 'src/objects/field-option.dart';
-
+export 'src/utils/field-options.dart';
 // TODO: Export any libraries intended for clients of this package.
