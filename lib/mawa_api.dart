@@ -8,6 +8,7 @@ export 'src/services/user-service.dart';
 export 'src/services/membership-service.dart';
 export 'src/keys/shared-preference-keys.dart';
 export 'src/objects/membership.dart';
+export 'src/objects/individual.dart';
 export 'src/services/field-option-service.dart';
 export 'src/objects/field-option.dart';
 export 'src/utils/field-options.dart';
