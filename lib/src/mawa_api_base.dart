@@ -14,6 +14,8 @@ class MawaAPI {
       apiHost = 'api.app.mawa.co.za';
     } else if (environment == 'dev') {
       apiHost = 'dev.api.app.mawa.co.za';
+    }else if (environment == 'local') {
+      apiHost = 'localhost:8080';
     }
     preferences.then((SharedPreferences prefs) {
       return (prefs.setString(SharedPrefKey.apiHost, apiHost));

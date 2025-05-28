@@ -1,6 +1,6 @@
 
 import 'package:mawa_api/src/services/network-request.dart';
-import 'package:mawa_api/src/utils/globals.dart';
+import 'package:mawa_api/src/utils/global.dart';
 import 'package:mawa_api/src/utils/keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

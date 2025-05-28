@@ -257,6 +257,7 @@ class JsonResponses {
 }
 
 class Resources {
+  static const String ping = 'ping';
   static const String membership = 'membership/v2';
   static const String partner = 'partner';
   static const String validateSAID = 'validateSAID';
@@ -264,6 +265,7 @@ class Resources {
   static const String otp = 'otp';
   static const String customers = 'customers';
   static const String authenticate = 'authenticate';
+  static const String authenticateApp = 'authenticate-app';
   static const String tickets = 'tickets';
   static const String ticketsLog = 'ticketsLog';
   static const String ticketInProgress = 'inprogress';

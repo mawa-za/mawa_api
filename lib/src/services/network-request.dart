@@ -6,14 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mawa_api/mawa_api.dart';
 import 'package:mawa_api/src/services/user-service.dart';
-import 'package:mawa_api/src/utils/globals.dart';
+import 'package:mawa_api/src/utils/global.dart';
 import 'package:mawa_api/src/utils/keys.dart';
 import 'package:mawa_api/src/utils/token.dart';
 import 'package:mawa_api/src/utils/tools.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NetworkRequest {
-
   NetworkRequest({this.responseType}) {
     _getToken();
   }
@@ -27,7 +26,7 @@ class NetworkRequest {
   String? responseType /* = responseJson*/;
 
   static const String methodGet = 'get';
-  static const String methodPost = 'post';
+  static const String methodPost = 'POST';
   static const String methodPut = 'put';
   static const String methodDelete = 'delete';
   late String apiURL;
@@ -61,7 +60,6 @@ class NetworkRequest {
   }
 
   Map<String, String> headers({required String tokenKey, bool secured = true}) {
-
     Map<String, String> headers = {
       "X-TenantID": tenantID,
     };
@@ -93,12 +91,12 @@ class NetworkRequest {
   }
 
   Future<dynamic> securedMawaAPI(
-      String method, {
-        required String resource,
-        dynamic body,
-        Map<String, dynamic>? queryParameters,
-        bool secured = true,
-      }) async {
+    String method, {
+    required String resource,
+    dynamic body,
+    Map<String, dynamic>? queryParameters,
+    bool secured = true,
+  }) async {
     // token == null ? token = await _key: null;
     final SharedPreferences prefs = await preferences;
 
@@ -106,10 +104,9 @@ class NetworkRequest {
     token = await prefs.getString(SharedPrefs.token) ?? '';
 
     String tenant = prefs.getString(SharedPrefs.tenantID) ?? '';
-    if(tenant.isNotEmpty){
+    if (tenant.isNotEmpty) {
       tenantID = tenant;
-    }
-    else{
+    } else {
       if (kIsWeb) {
         var base = Uri.base.origin;
         tenantID = base.split('//').last;
@@ -117,14 +114,19 @@ class NetworkRequest {
         tenantID = tenant;
       }
     }
-    apiURL = 'https://$apiHost/';
-
     dynamic url;
+    if (apiHost == 'localhost:8080') {
+      url = Uri.http(apiHost, resource, queryParameters);
+    } else {
+      url = Uri.https(apiHost, resource, queryParameters);
+    }
+
+
     dynamic header = headers(
       tokenKey: token,
       secured: secured,
     );
-    url = Uri.https(apiHost, resource, queryParameters);
+
     if (kDebugMode) {
       print(method);
       print(url);
@@ -146,10 +148,8 @@ class NetworkRequest {
           );
           break;
         case methodPost:
-          feedback = await http.post(
-              url,
-              headers: headers(tokenKey: token),
-              body: jsonEncode(body));
+          feedback = await http.post(url,
+              headers: headers(tokenKey: token), body: jsonEncode(body));
           break;
         case methodPut:
           feedback = await http.put(url,
@@ -165,33 +165,35 @@ class NetworkRequest {
       }
       return responseCaught;
     }
-
   }
 
   Future unsecuredMawaAPI(
-      String method, {
-        required String resource,
-        Map<String, String>? payload,
-        Map<String, dynamic>? queryParameters,
-        BuildContext? context,
-      }) async {
+    String method, {
+    required String resource,
+    Map<String, String>? payload,
+    Map<String, dynamic>? queryParameters,
+    BuildContext? context,
+  }) async {
     final SharedPreferences prefs = await preferences;
     apiHost = await prefs.getString(SharedPrefs.apiHost) ?? '';
 
-    if (kIsWeb) {
-      var base = Uri.base.origin;
-      tenantID = base.split('//').last;
-    } else {
+    // if (kIsWeb) {
+    //   var base = Uri.base.origin;
+    //   tenantID = base.split('//').last;
+    // } else {
       tenantID = await prefs.getString(SharedPrefs.tenantID) ?? '';
       // tenantID = MawaAPI.getTenant() ?? '';
-    }
+    // }
     apiURL = 'https://$apiHost/';
     dynamic url;
 
-    url = Uri.https(apiHost,resource,queryParameters);
+    if (apiHost == 'localhost:8080') {
+      url = Uri.http(apiHost, resource, queryParameters);
+    } else {
+      url = Uri.https(apiHost, resource, queryParameters);
+    }
 
     try {
-
       switch (method) {
         case methodGet:
           feedback = await http.get(
@@ -231,7 +233,8 @@ class NetworkRequest {
             if (resource == Resources.otp) {
               otp = await data;
             }
-            if (resource == Resources.authenticate) {
+            if (resource == Resources.authenticate ||
+                resource == Resources.authenticateApp) {
               token = await data[JsonResponses.token];
               Token.refreshToken = await data[JsonResponses.refreshToken] ?? '';
               preferences.then((SharedPreferences prefs) {
@@ -245,7 +248,6 @@ class NetworkRequest {
               //   return (prefs.setString(SharedPrefs.username, UserService.username));
               // });
             }
-
           }
           break;
         default:

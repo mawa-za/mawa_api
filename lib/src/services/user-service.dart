@@ -31,6 +31,22 @@ class UserService {
     return response;
   }
 
+  authenticateApp({required String application,required String username, required String password}) async {
+    //username = username;
+    dynamic response = await NetworkRequest().unsecuredMawaAPI(
+        NetworkRequest.methodPost,
+        resource: Resources.authenticateApp,
+        payload: {"username": username, "password": password, "application": application});
+    return response;
+  }
+
+  ping() async {
+    dynamic response = await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodGet,
+        resource: Resources.ping);
+    return response;
+  }
+
   get(String id) async {
     user = await NetworkRequest.decodeJson(
       await NetworkRequest().securedMawaAPI(

@@ -10,7 +10,8 @@ class IndividualService {
     List<Individual> objectList = [];
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodGet,
-        resource: Resources.partner);
+        resource: Resources.partnerV2,
+        queryParameters: {"role":"CUSTOMER"});
 
     if (response.statusCode == 200) {
       jsonObject = jsonDecode(response.body);
@@ -26,7 +27,7 @@ class IndividualService {
     List<Individual> objectList = [];
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodGet,
-        resource: '${Resources.partner}/$id');
+        resource: '${Resources.partnerV2}/$id');
 
     if (response.statusCode == 200) {
       jsonObject = jsonDecode(response.body);
