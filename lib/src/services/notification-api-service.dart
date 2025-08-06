@@ -3,7 +3,7 @@ import 'package:mawa_api/src/keys/network-resource-keys.dart';
 import 'package:mawa_api/src/objects/notification.dart';
 import 'package:mawa_api/src/services/network-request.dart';
 
-class NotificationService{
+class NotificationApiService{
   get(String user, String status) async {
     dynamic jsonObject;
     List<Notification> notificationObjectList = [];
