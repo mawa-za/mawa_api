@@ -3,6 +3,7 @@ class Resources {
   static const String membership = 'membership';
   static const String membershipV2 = 'membership/v2';
   static const String partner = 'partner';
+  static const String notification = 'notification';
   static const String partner_v2 = 'v2/partner';
   static const String partnerV2 = 'partner/v2';
   static const String purchaseOrder = 'purchase-order';
