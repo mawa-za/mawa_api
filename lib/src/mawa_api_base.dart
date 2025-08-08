@@ -7,15 +7,15 @@ class MawaAPI {
       SharedPreferences.getInstance();
 
   static setAPIHost(environment) {
-    dynamic apiHost = 'dev.api.app.mawa.co.za';
-    if (environment == 'qas') {
-      apiHost = 'qas.api.app.mawa.co.za';
+    dynamic apiHost = 'localhost:8080';
+    if (environment == 'beta') {
+      apiHost = 'beta.api.app.mawa.co.za';
     } else if (environment == 'prod') {
       apiHost = 'api.app.mawa.co.za';
     } else if (environment == 'dev') {
       apiHost = 'dev.api.app.mawa.co.za';
-    }else if (environment == 'local') {
-      apiHost = 'localhost:8080';
+    }else if (environment == 'alpha') {
+      apiHost = 'alpha.api.app.mawa.co.za';
     }
     preferences.then((SharedPreferences prefs) {
       return (prefs.setString(SharedPrefKey.apiHost, apiHost));
