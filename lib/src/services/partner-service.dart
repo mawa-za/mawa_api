@@ -36,4 +36,12 @@ class PartnerService {
         resource: '${Resources.partner}/$id');
     return response;
   }
+
+  addRole(String id, String role) async {
+    dynamic response = await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodPost,
+        resource: '${Resources.partner_v2}/$id/role',
+        body: [role]);
+    return response;
+  }
 }
