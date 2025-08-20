@@ -20,4 +20,5 @@ export 'src/utils/field-options.dart';
 export 'src/utils/global.dart';
 export 'src/services/notification-api-service.dart';
 export 'src/services/case-service.dart';
+export 'src/objects/case.dart';
 // TODO: Export any libraries intended for clients of this package.
