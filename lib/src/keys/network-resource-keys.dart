@@ -6,6 +6,7 @@ class Resources {
   static const String notification = 'notification';
   static const String partner_v2 = 'v2/partner';
   static const String partnerV2 = 'partner/v2';
+
   static const String purchaseOrder = 'purchase-order';
   static const String salesOrder = 'sales-order';
   static const String invoice = 'invoice';
@@ -13,4 +14,5 @@ class Resources {
   static const String option = 'option';
   static const String receipt = 'receipt';
   static const String partner_v2_identity = 'v2/partner/identity';
+  static const String caseV2 = 'v2/case';
 }
