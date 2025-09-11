@@ -15,4 +15,6 @@ class Resources {
   static const String receipt = 'receipt';
   static const String partner_v2_identity = 'v2/partner/identity';
   static const String caseV2 = 'v2/case';
+  static const String storageBin = 'storage-bin';
+  static const String productStorageBin = 'product-storage-bin';
 }

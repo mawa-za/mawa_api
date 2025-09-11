@@ -21,4 +21,7 @@ export 'src/utils/global.dart';
 export 'src/services/notification-api-service.dart';
 export 'src/services/case-service.dart';
 export 'src/objects/case.dart';
+export 'src/objects/storage-bin.dart';
+export 'src/objects/product-storage-bin.dart';
+export 'src/services/storage-bin-service.dart';
 // TODO: Export any libraries intended for clients of this package.
