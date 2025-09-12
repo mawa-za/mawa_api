@@ -6,17 +6,11 @@ import 'package:mawa_api/src/services/network-request.dart';
 
 class StorageBinService{
   post(dynamic body) async {
-    dynamic jsonObject;
-    StorageBin? receiptObject;
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodPost,
-        body: body,
-        resource: Resources.storageBin);
-    if (response.statusCode == 200) {
-      jsonObject = jsonDecode(response.body);
-      receiptObject =  StorageBin.fromJson(jsonObject);
-    } else {}
-    return receiptObject;
+        resource: Resources.storageBin,
+        body: body);
+    return response;
   }
 
   get(String id) async {
