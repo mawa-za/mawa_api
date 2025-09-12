@@ -29,17 +29,9 @@ class StorageBinService{
   }
 
   getAll() async {
-    dynamic jsonObject;
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodGet,
         resource: Resources.storageBin);
-    if (response.statusCode == 200) {
-      jsonObject = jsonDecode(response.body);
-      return (jsonObject as List)
-          .map((data) => StorageBin.fromJson(data))
-          .toList();
-    } else {
-      return [];
-    }
+    return response;
   }
 }
