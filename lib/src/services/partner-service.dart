@@ -23,11 +23,19 @@ class PartnerService {
   }
 
   search({required String query,required String role}) async {
+    dynamic jsonObject;
+    List<Partner> list = [];
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodGet,
         resource: Resources.partner_v2,
         queryParameters: {'query': query,'role':role});
-    return response;
+    if (response.statusCode == 200) {
+      jsonObject = jsonDecode(response.body);
+      list = (jsonObject as List)
+          .map((data) => Partner.fromJson(data))
+          .toList();
+    } else {}
+    return list;
   }
 
   getById(String id) async {
