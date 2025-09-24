@@ -22,11 +22,11 @@ class PartnerService {
     return response;
   }
 
-  search(String query) async {
+  search(String query,String role) async {
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodGet,
         resource: Resources.partner_v2,
-        queryParameters: {'query': query});
+        queryParameters: {'query': query,'role':role});
     return response;
   }
 
