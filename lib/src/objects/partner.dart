@@ -31,4 +31,19 @@ class Partner {
       name3: parsedJson['name3'].toString(),
     );
   }
+
+  String get fullName {
+    return [name1, name2, name3].where((n) => n.isNotEmpty).join(' ');
+  }
+
+  /// Display name based on partner type
+  String get displayName {
+    if (partnerType.toUpperCase() == 'ORGANISATION') {
+      // For organisations, just use name1
+      return name1;
+    } else {
+      // For individuals, use full name
+      return fullName;
+    }
+  }
 }
