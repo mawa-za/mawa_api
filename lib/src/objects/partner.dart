@@ -9,7 +9,7 @@ class Partner {
   final String name2;
   final String name3;
   final String email;
-  final String cellphone;
+  final String contactNumber;
 
   Partner({
     this.partnerRole = '',
@@ -22,7 +22,7 @@ class Partner {
     this.name2 = '',
     this.name3 = '',
     this.email = '',
-    this.cellphone = '',
+    this.contactNumber = '',
   });
 
   factory Partner.fromJson(Map<String, dynamic> parsedJson) {
@@ -36,7 +36,7 @@ class Partner {
       name1: parsedJson['name1'].toString(),
       name2: parsedJson['name2'].toString(),
       name3: parsedJson['name3'].toString(),
-      cellphone: parsedJson['cellphone'].toString(),
+      contactNumber: parsedJson['contactNumber'].toString(),
       email: parsedJson['email'].toString(),
     );
   }

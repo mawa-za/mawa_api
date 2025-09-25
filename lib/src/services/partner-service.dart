@@ -19,7 +19,7 @@ class PartnerService {
           'name1': partner.name1,
           'name2': partner.name2,
           'name3': partner.name3,
-          'cellphone': partner.cellphone,
+          'contactNumber': partner.contactNumber,
           'email': partner.email,
         });
     return response;
