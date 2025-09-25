@@ -10,6 +10,7 @@ class PartnerService {
   create(Partner partner) async {
     dynamic jsonObject;
     Partner? object;
+    List<Partner> list = [];
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodPost,
         resource: Resources.partner_v2,
@@ -27,9 +28,11 @@ class PartnerService {
 
     if (response.statusCode == 200) {
       jsonObject = jsonDecode(response.body);
-      object =  Partner.fromJson(jsonObject);
+      list = (jsonObject as List)
+          .map((data) => Partner.fromJson(data))
+          .toList();
     } else {}
-    return object;
+    return list.first;
   }
 
   search({required String query,required String role}) async {
