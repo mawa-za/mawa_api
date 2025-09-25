@@ -28,11 +28,10 @@ class PartnerService {
 
     if (response.statusCode == 200) {
       jsonObject = jsonDecode(response.body);
-      list = (jsonObject as List)
-          .map((data) => Partner.fromJson(data))
-          .toList();
-    } else {}
-    return list.first;
+      return Partner.fromJson(jsonObject);
+    } else {
+      return null;
+    }
   }
 
   search({required String query,required String role}) async {
