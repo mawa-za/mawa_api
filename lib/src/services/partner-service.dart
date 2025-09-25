@@ -8,6 +8,8 @@ import '../objects/partner.dart';
 
 class PartnerService {
   create(Partner partner) async {
+    dynamic jsonObject;
+    Partner? object;
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodPost,
         resource: Resources.partner_v2,
@@ -22,7 +24,12 @@ class PartnerService {
           'contactNumber': partner.contactNumber,
           'email': partner.email,
         });
-    return response;
+
+    if (response.statusCode == 200) {
+      jsonObject = jsonDecode(response.body);
+      object =  Partner.fromJson(jsonObject);
+    } else {}
+    return object;
   }
 
   search({required String query,required String role}) async {
