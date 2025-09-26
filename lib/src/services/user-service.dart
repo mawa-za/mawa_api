@@ -127,7 +127,7 @@ class UserService {
   }
 
   changePassword({required String password}) async {
-    NetworkRequest().securedMawaAPI(NetworkRequest.methodPut,
+    NetworkRequest().securedMawaAPI(NetworkRequest.methodPost,
         resource: Resources.changePassword, body: {"password": password});
   }
 
