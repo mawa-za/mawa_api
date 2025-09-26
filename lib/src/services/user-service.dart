@@ -129,7 +129,7 @@ class UserService {
 
   changePassword({required String password}) async {
     return await NetworkRequest().securedMawaAPI(NetworkRequest.methodPut,
-        resource: Resources.resetPassword, body: {"password": password});
+        resource: Resources.changePassword, body: {"password": password});
   }
 
   resetPassword({required String username}) async {

@@ -275,6 +275,7 @@ class Resources {
   static const String ticketCancel = 'cancel';
   static const String user = 'user';
   static const String resetPassword = 'passwordreset';
+  static const String changePassword = 'change-password';
   static const String reset = 'reset';
   static const String forgotPassword = 'forgot-password';
   static const String versions = 'versions';
