@@ -102,21 +102,29 @@ class UserService {
     return UserService.user = mapUsers;
   }
 
+  // forgotPassword({required String emailAddress}) async {
+  //   Map<String, String> headers = {"Content-type": "application/json"};
+  //   Map json = {"email": emailAddress};
+  //   http.Response response = await http.post(
+  //       Uri.http(NetworkRequest().apiURL,
+  //           NetworkRequest.path + Resources.forgotPassword),
+  //       headers: headers,
+  //       body: jsonEncode(json));
+  //   NetworkRequest.statusCode = response.statusCode;
+  //
+  //   if (response.statusCode == 200 || response.statusCode == 201) {
+  //     NetworkRequest.token = jsonDecode(response.body);
+  //   } else if (response.statusCode == 417) {
+  //     return jsonDecode(response.body);
+  //   }
+  // }
   forgotPassword({required String emailAddress}) async {
-    Map<String, String> headers = {"Content-type": "application/json"};
-    Map json = {"email": emailAddress};
-    http.Response response = await http.post(
-        Uri.http(NetworkRequest().apiURL,
-            NetworkRequest.path + Resources.forgotPassword),
-        headers: headers,
-        body: jsonEncode(json));
-    NetworkRequest.statusCode = response.statusCode;
-
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      NetworkRequest.token = jsonDecode(response.body);
-    } else if (response.statusCode == 417) {
-      return jsonDecode(response.body);
-    }
+    //username = username;
+    dynamic response = await NetworkRequest().unsecuredMawaAPI(
+        NetworkRequest.methodPost,
+        resource: Resources.forgotPassword,
+        payload: {"email": emailAddress});
+    return response;
   }
 
   changePassword({required String password}) async {

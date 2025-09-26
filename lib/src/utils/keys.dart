@@ -276,7 +276,7 @@ class Resources {
   static const String user = 'user';
   static const String resetPassword = 'passwordreset';
   static const String reset = 'reset';
-  static const String forgotPassword = 'forgotPassword';
+  static const String forgotPassword = 'forgot-password';
   static const String versions = 'versions';
   static const String leaves = 'leaves';
   static const String fields = 'fields';
