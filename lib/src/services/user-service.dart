@@ -123,7 +123,7 @@ class UserService {
     dynamic response = await NetworkRequest().unsecuredMawaAPI(
         NetworkRequest.methodPost,
         resource: Resources.forgotPassword,
-        payload: {"email": emailAddress});
+        queryParameters: {"email": emailAddress});
     return response;
   }
 
