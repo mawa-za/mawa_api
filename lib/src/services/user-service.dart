@@ -120,15 +120,14 @@ class UserService {
   // }
   forgotPassword({required String emailAddress}) async {
     //username = username;
-    dynamic response = await NetworkRequest().unsecuredMawaAPI(
+    NetworkRequest().unsecuredMawaAPI(
         NetworkRequest.methodPost,
         resource: Resources.forgotPassword,
         queryParameters: {"email": emailAddress});
-    return response;
   }
 
   changePassword({required String password}) async {
-    return await NetworkRequest().securedMawaAPI(NetworkRequest.methodPut,
+    NetworkRequest().securedMawaAPI(NetworkRequest.methodPut,
         resource: Resources.changePassword, body: {"password": password});
   }
 
