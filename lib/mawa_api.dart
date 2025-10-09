@@ -24,4 +24,7 @@ export 'src/objects/case.dart';
 export 'src/objects/storage-bin.dart';
 export 'src/objects/product-storage-bin.dart';
 export 'src/services/storage-bin-service.dart';
-// TODO: Export any libraries intended for clients of this package.
+export 'src/services/setting-service.dart';
+export 'src/objects/setting.dart';
+// TODO: Export any libraries intended for clients
+//  of this package.
