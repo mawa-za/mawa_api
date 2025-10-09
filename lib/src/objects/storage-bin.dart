@@ -2,6 +2,7 @@ class StorageBin {
   late dynamic binId;
   late dynamic aisle;
   late dynamic rack;
+  late dynamic stack;
   late dynamic shelf;
   late dynamic product;
   late dynamic description;
@@ -9,24 +10,25 @@ class StorageBin {
   late dynamic published;
   StorageBin(
       {this.binId,
-        this.aisle,
-        this.rack,
-        this.shelf,
-        this.product,
-        this.description,
-        this.published,
-        this.binCode});
+      this.aisle,
+      this.rack,
+      this.stack,
+      this.shelf,
+      this.product,
+      this.description,
+      this.published,
+      this.binCode});
 
   factory StorageBin.fromJson(Map<String, dynamic> parsedJson) {
     return StorageBin(
-      binId: parsedJson['binId'].toString(),
-      aisle: parsedJson['aisle'].toString(),
-      rack: parsedJson['rack'].toString(),
-      shelf: parsedJson['shelf'].toString(),
-      product: parsedJson['product'].toString(),
-      description: parsedJson['description'].toString(),
-      binCode: parsedJson['binCode'].toString(),
-      published: parsedJson['published'].toString(),
-    );
+        binId: parsedJson['binId'].toString(),
+        aisle: parsedJson['aisle'].toString(),
+        rack: parsedJson['rack'].toString(),
+        stack: parsedJson['stack'].toString(),
+        shelf: parsedJson['shelf'].toString(),
+        product: parsedJson['product'].toString(),
+        description: parsedJson['description'].toString(),
+        binCode: parsedJson['binCode'].toString(),
+        published: parsedJson['published']);
   }
 }
