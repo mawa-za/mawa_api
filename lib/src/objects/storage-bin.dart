@@ -26,7 +26,7 @@ class StorageBin {
       product: parsedJson['product'].toString(),
       description: parsedJson['description'].toString(),
       binCode: parsedJson['binCode'].toString(),
-      published: parsedJson['published'].toString(),
+      published: parsedJson['published']
     );
   }
 }
