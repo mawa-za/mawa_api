@@ -48,7 +48,7 @@ class SettingService {
     return object;
   }
 
-  getAll(String type) async {
+  getAll() async {
     dynamic jsonObject;
     List<Setting> list = [];
     dynamic response = await NetworkRequest()
