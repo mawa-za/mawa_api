@@ -26,5 +26,7 @@ export 'src/objects/product-storage-bin.dart';
 export 'src/services/storage-bin-service.dart';
 export 'src/services/setting-service.dart';
 export 'src/objects/setting.dart';
+export 'src/services/product-service.dart';
+export 'src/objects/product.dart';
 // TODO: Export any libraries intended for clients
 //  of this package.
