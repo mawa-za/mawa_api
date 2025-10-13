@@ -1,4 +1,5 @@
 class Product {
+  late dynamic id;
   late dynamic code;
   late dynamic description;
   late dynamic type;
@@ -7,7 +8,8 @@ class Product {
   late dynamic price;
   late dynamic autoGenerateCode;
   Product(
-      {this.code,
+      {this.id,
+      this.code,
       this.description,
       this.type,
       this.category,
@@ -17,6 +19,7 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> parsedJson) {
     return Product(
+        id: parsedJson['id'].toString(),
         code: parsedJson['code'].toString(),
         description: parsedJson['description'].toString(),
         type: parsedJson['type'].toString(),
@@ -25,4 +28,6 @@ class Product {
         price: parsedJson['price'].toString(),
         autoGenerateCode: parsedJson['autoGenerateCode'].toString());
   }
+  @override
+  String toString() => '$code — $description';
 }
