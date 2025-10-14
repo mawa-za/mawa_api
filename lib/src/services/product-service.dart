@@ -5,7 +5,7 @@ import 'package:mawa_api/src/objects/product.dart';
 import 'package:mawa_api/src/objects/storage-bin.dart';
 import 'package:mawa_api/src/services/network-request.dart';
 
-class ProductService{
+class ProductService {
   post(dynamic body) async {
     dynamic jsonObject;
     Product? object;
@@ -15,7 +15,7 @@ class ProductService{
         resource: Resources.product);
     if (response.statusCode == 200) {
       jsonObject = jsonDecode(response.body);
-      object =  Product.fromJson(jsonObject);
+      object = Product.fromJson(jsonObject);
     } else {}
     return object;
   }
@@ -28,24 +28,23 @@ class ProductService{
         resource: '${Resources.product}/$id');
     if (response.statusCode == 200) {
       jsonObject = jsonDecode(response.body);
-      list = (jsonObject as List)
-          .map((data) => Product.fromJson(data))
-          .toList();
+      list =
+          (jsonObject as List).map((data) => Product.fromJson(data)).toList();
     } else {}
     return list;
   }
 
-  getAll() async {
+  getAll(List<String> typeList) async {
     dynamic jsonObject;
     List<Product> list = [];
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodGet,
-        resource: Resources.product);
+        resource: Resources.product,
+        queryParameters: {'type': typeList[0]});
     if (response.statusCode == 200) {
       jsonObject = jsonDecode(response.body);
-      list = (jsonObject as List)
-          .map((data) => Product.fromJson(data))
-          .toList();
+      list =
+          (jsonObject as List).map((data) => Product.fromJson(data)).toList();
     } else {}
     return list;
   }
