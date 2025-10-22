@@ -77,7 +77,7 @@ class UserService {
     dynamic response = await NetworkRequest.decodeJson(
       await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodGet,
-        resource: '${Resources.user}/$id/role',
+        resource: 'v2/user/$id/role',
       ),
       negativeResponse: {},
     );
