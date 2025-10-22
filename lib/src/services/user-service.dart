@@ -58,6 +58,17 @@ class UserService {
     return user;
   }
 
+  getRoles(String id) async {
+    dynamic response = await NetworkRequest.decodeJson(
+      await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodGet,
+        resource: '${Resources.user}/$id/role',
+      ),
+      negativeResponse: {},
+    );
+    return response;
+  }
+
   getUserDetails(String username, {bool getPerson = false}) async {
     loggedInUser.clear();
     try {
