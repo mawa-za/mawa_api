@@ -34,6 +34,19 @@ class ProductService {
     return list;
   }
 
+  getByCode(String code) async {
+    dynamic jsonObject;
+    Product? object;
+    dynamic response = await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodGet,
+        resource: '${Resources.product}/code/$code');
+    if (response.statusCode == 200) {
+      jsonObject = jsonDecode(response.body);
+      object = Product.fromJson(jsonObject);
+    } else {}
+    return object;
+  }
+
   getAll(List<String> typeList) async {
     dynamic jsonObject;
     List<Product> list = [];
