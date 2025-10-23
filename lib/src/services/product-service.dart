@@ -47,13 +47,13 @@ class ProductService {
     return object;
   }
 
-  getAll(List<String> typeList) async {
+  getAll(List<String> typeList, String query) async {
     dynamic jsonObject;
     List<Product> list = [];
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodGet,
         resource: Resources.product,
-        queryParameters: {'type': typeList[0]});
+        queryParameters: {'type': typeList[0], 'query':query});
     if (response.statusCode == 200) {
       jsonObject = jsonDecode(response.body);
       list =
