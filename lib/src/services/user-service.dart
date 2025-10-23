@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:mawa_api/src/services/network-request.dart';
 import 'package:mawa_api/src/utils/keys.dart';
 
+import '../objects/user.dart';
+
 class UserService {
 
   static String? partnerId;
@@ -56,6 +58,30 @@ class UserService {
       negativeResponse: {},
     );
     return user;
+  }
+
+  me() async {
+    dynamic jsonObject;
+    User? object;
+    dynamic response = await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodGet,
+        resource: 'me');
+    if (response.statusCode == 200) {
+      jsonObject = jsonDecode(response.body);
+      object = User.fromJson(jsonObject);
+    } else {}
+    return object;
+  }
+
+  getRoles(String id) async {
+    dynamic response = await NetworkRequest.decodeJson(
+      await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodGet,
+        resource: 'user/v2/$id/role',
+      ),
+      negativeResponse: {},
+    );
+    return response;
   }
 
   getUserDetails(String username, {bool getPerson = false}) async {
