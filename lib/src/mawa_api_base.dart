@@ -2,59 +2,55 @@ import 'package:mawa_api/src/keys/shared-preference-keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MawaAPI {
-  late final String environment;
-  static Future<SharedPreferences> preferences =
-      SharedPreferences.getInstance();
+  static Future<void> setAPIHost(String environment) async {
+    final prefs = await SharedPreferences.getInstance();
 
-  static setAPIHost(environment) {
-    dynamic apiHost = 'localhost:8080';
-    if (environment == 'beta') {
-      apiHost = 'beta.api.app.mawa.co.za';
-    } else if (environment == 'prod') {
-      apiHost = 'api.app.mawa.co.za';
-    } else if (environment == 'dev') {
-      apiHost = 'dev.api.app.mawa.co.za';
-    }else if (environment == 'alpha') {
-      apiHost = 'alpha.api.app.mawa.co.za';
+    String apiHost = 'localhost:8080';
+    switch (environment) {
+      case 'beta':
+        apiHost = 'beta.api.app.mawa.co.za';
+        break;
+      case 'prod':
+        apiHost = 'api.app.mawa.co.za';
+        break;
+      case 'dev':
+        apiHost = 'dev.api.app.mawa.co.za';
+        break;
+      case 'alpha':
+        apiHost = 'alpha.api.app.mawa.co.za';
+        break;
     }
-    preferences.then((SharedPreferences prefs) {
-      return (prefs.setString(SharedPrefKey.apiHost, apiHost));
-    });
+
+    await prefs.setString(SharedPrefKey.apiHost, apiHost);
   }
 
-  static setTenant(tenant) {
-    preferences.then((SharedPreferences prefs) {
-      return (prefs.setString(SharedPrefKey.tenantID, tenant));
-    });
+  static Future<void> setTenant(String tenant) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(SharedPrefKey.tenantID, tenant);
   }
 
-  static String? getTenant() {
-    preferences.then((SharedPreferences prefs) {
-      return (prefs.getString(SharedPrefKey.tenantID));
-    });
+  static Future<String?> getTenant() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(SharedPrefKey.tenantID);
   }
 
-  static setToken({required token}) {
-    preferences.then((SharedPreferences prefs) {
-      return (prefs.setString(SharedPrefKey.tenantID, token));
-    });
+  static Future<void> setToken(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(SharedPrefKey.token, token);
   }
 
-  static String? getToken() {
-    preferences.then((SharedPreferences prefs) {
-      return (prefs.getString(SharedPrefKey.token));
-    });
+  static Future<String?> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(SharedPrefKey.token);
   }
 
-  static setSalesArea({required salesArea}) {
-    preferences.then((SharedPreferences prefs) {
-      return (prefs.setString(SharedPrefKey.salesArea, salesArea));
-    });
+  static Future<void> setSalesArea(String salesArea) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(SharedPrefKey.salesArea, salesArea);
   }
 
-  static String? getSalesArea() {
-    preferences.then((SharedPreferences prefs) {
-      return (prefs.getString(SharedPrefKey.salesArea));
-    });
+  static Future<String?> getSalesArea() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(SharedPrefKey.salesArea);
   }
 }
