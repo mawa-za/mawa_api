@@ -212,4 +212,15 @@ class UserService {
 
     return assignees;
   }
+
+  getWorkcenters(String role) async {
+    dynamic response = await NetworkRequest.decodeJson(
+      await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodGet,
+      resource: 'role/$role/workcenter',
+      ),
+      negativeResponse: {},
+    );
+    return response;
+  }
 }
