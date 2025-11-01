@@ -49,6 +49,20 @@ class UserService {
     return response;
   }
 
+  update(dynamic body) async {
+    dynamic jsonObject;
+    User? object;
+    dynamic response = await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodPost,
+        body: body,
+        resource: Resources.user);
+    if (response.statusCode == 200) {
+      jsonObject = jsonDecode(response.body);
+      object =  User.fromJson(jsonObject);
+    } else {}
+    return object;
+  }
+
   get(String id) async {
     user = await NetworkRequest.decodeJson(
       await NetworkRequest().securedMawaAPI(
