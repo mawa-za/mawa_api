@@ -21,17 +21,32 @@ class StorageBinService{
 
   get(String id) async {
     dynamic jsonObject;
-    List<StorageBin> receiptObjectList = [];
+    List<StorageBin> binObjectList = [];
     dynamic response = await NetworkRequest().securedMawaAPI(
         NetworkRequest.methodGet,
         resource: '${Resources.storageBin}/$id');
     if (response.statusCode == 200) {
       jsonObject = jsonDecode(response.body);
-      receiptObjectList = (jsonObject as List)
+      binObjectList = (jsonObject as List)
           .map((data) => StorageBin.fromJson(data))
           .toList();
     } else {}
-    return receiptObjectList;
+    return binObjectList;
+  }
+
+  delete(String id) async {
+    dynamic jsonObject;
+    List<StorageBin> receiptObjectList = [];
+    dynamic response = await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodDelete,
+        resource: '${Resources.storageBin}/$id');
+    // if (response.statusCode == 200) {
+    //   jsonObject = jsonDecode(response.body);
+    //   receiptObjectList = (jsonObject as List)
+    //       .map((data) => StorageBin.fromJson(data))
+    //       .toList();
+    // } else {}
+    // return receiptObjectList;
   }
 
   getAll() async {
