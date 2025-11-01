@@ -8,6 +8,8 @@ class StorageBin {
   late dynamic description;
   late dynamic binCode;
   late dynamic published;
+  late dynamic batchNumber;
+  late dynamic expiryDate;
   StorageBin(
       {this.binId,
       this.aisle,
@@ -17,7 +19,9 @@ class StorageBin {
       this.product,
       this.description,
       this.published,
-      this.binCode});
+      this.binCode,
+      this.batchNumber,
+      this.expiryDate});
 
   factory StorageBin.fromJson(Map<String, dynamic> parsedJson) {
     return StorageBin(
@@ -29,6 +33,9 @@ class StorageBin {
         product: parsedJson['product'].toString(),
         description: parsedJson['description'].toString(),
         binCode: parsedJson['binCode'].toString(),
-        published: parsedJson['published']);
+        published: parsedJson['published'],
+        batchNumber: parsedJson['batchNumber'].toString(),
+        expiryDate: parsedJson['expiryDate'].toString());
+
   }
 }
