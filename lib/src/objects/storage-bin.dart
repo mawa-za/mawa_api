@@ -34,7 +34,7 @@ class StorageBin {
         description: parsedJson['description'].toString(),
         binCode: parsedJson['binCode'].toString(),
         published: parsedJson['published'],
-        batchNumber: parsedJson['batchNumber'].toString() ?? '',
+        batchNumber: parsedJson['batchNumber'].toString(),
         expiryDate: parsedJson['expiryDate'] ?? '') ;
 
   }
