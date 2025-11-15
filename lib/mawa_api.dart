@@ -30,5 +30,7 @@ export 'src/services/product-service.dart';
 export 'src/objects/product.dart';
 export 'src/objects/user.dart';
 export 'src/objects/destination.dart';
+export 'src/services/leave-service.dart';
+export 'src/objects/leave.dart';
 // TODO: Export any libraries intended for clients
 //  of this package.

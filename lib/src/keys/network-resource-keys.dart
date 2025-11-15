@@ -19,4 +19,5 @@ class Resources {
   static const String productStorageBin = 'product-storage-bin';
   static const String setting = 'setting';
   static const String product = 'product';
+  static const String leave = 'leave';
 }
