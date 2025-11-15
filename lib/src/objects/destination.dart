@@ -5,10 +5,12 @@ class MawaDestination {
   final IconData? selectedIcon;
   final String label;
   final String route;
+  final String tooltip;
   const MawaDestination({
     required this.icon,
     required this.label,
     required this.route,
     this.selectedIcon,
+    this.tooltip,
   });
 }
