@@ -19,6 +19,21 @@ class LeaveService{
     return object;
   }
 
+  me() async {
+    dynamic jsonObject;
+    List<Leave> list = [];
+    dynamic response = await NetworkRequest().securedMawaAPI(
+        NetworkRequest.methodGet,
+        resource: '${Resources.leave}/me');
+    if (response.statusCode == 200) {
+      jsonObject = jsonDecode(response.body);
+      list = (jsonObject as List)
+          .map((data) => Leave.fromJson(data))
+          .toList();
+    } else {}
+    return list;
+  }
+
   get(String id) async {
     dynamic jsonObject;
     List<Leave> list = [];
