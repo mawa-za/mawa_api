@@ -11,6 +11,6 @@ class MawaDestination {
     required this.label,
     required this.route,
     this.selectedIcon,
-    this.tooltip,
+    required this.tooltip,
   });
 }
